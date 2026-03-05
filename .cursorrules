@@ -1,0 +1,77 @@
+# Agents Council - Cursor Integration Rules
+
+## Available Agent Modes
+
+This workspace contains a multi-agent council system. Use the MCP tools from the `agents-council` server to:
+
+### Tools Available
+
+1. **list_agents** - List all available agent modes
+2. **invoke_agent** - Get a formatted prompt for a specific agent
+3. **prepare_council** - Prepare prompts for the full council (all agents)
+4. **collate_council** - Combine agent responses into a final report
+5. **validate_output** - Check if an agent's output matches expected format
+
+### Agent Modes
+
+- `senior_em_agent` - Engineering Manager: feedback, 1:1 prep, career plans, promotion readiness
+- `pr_reviewer_agent` - PR Review: risk identification, patch suggestions
+- `career_coach_agent` - Career Coach: vision, skill gaps, 3-month learning plan
+- `council_convenor` - Orchestrator: runs all agents in parallel and collates results
+
+### Usage Pattern
+
+For single-agent tasks:
+1. Use `invoke_agent` with the appropriate agent_id
+2. Execute the returned prompt
+3. Optionally use `validate_output` to check format
+
+For full council review:
+1. Use `prepare_council` with the user request
+2. Execute each agent's prompt
+3. Use `collate_council` to combine all responses
+
+### Output Formats
+
+**Senior EM Agent:**
+```
+SUMMARY: <one sentence>
+ACTIONS: 1. ... 2. ... 3. ...
+MILESTONES: Month3: ..., Month6: ..., Month12: ...
+```
+
+**PR Reviewer Agent:**
+```
+ONE-LINE VERDICT: <Approve | Minor changes | Major changes>
+TOP RISKS: 1. ... 2. ...
+ACTIONS: 1. ... 2. ... 3. ...
+```
+
+**Career Coach Agent:**
+```
+VISION: <one line>
+SKILL_GAPS: 1. ... 2. ... 3. ...
+3_MONTH_PLAN: tasks + learning resources
+METRICS: how to measure progress
+```
+
+**Council Convenor (JSON):**
+```json
+{
+  "convenor_summary": "...",
+  "senior_em": {...},
+  "pr_reviewer": {...},
+  "career_coach": {...},
+  "top_actions": [...],
+  "info_required": [...]
+}
+```
+
+### MCP Data Sources
+
+Configure these MCP servers in Cursor settings:
+
+- **Jira** (`Atlassian-MCP-Server`): team tickets and boards
+- **Google Calendar** (`google-calendar`): work calendar
+- **Slack** (`slack`): messaging and channel search
+- **GitHub** (`github`): PRs, commits, code review
