@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Team daily and delivery planning",
+    "duration_minutes": 45
+  },
+  {
+    "title": "1:1 career conversation",
+    "duration_minutes": 30
+  },
+  {
+    "title": "Customer support escalation",
+    "duration_minutes": 30
+  },
+  {
+    "title": "Architecture quality review",
+    "duration_minutes": 60
+  },
+  {
+    "title": "Next-quarter strategy workshop",
+    "duration_minutes": 45
+  }
+]

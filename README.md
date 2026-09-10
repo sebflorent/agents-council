@@ -5,8 +5,24 @@ A lightweight AI assistant setup for Engineering Managers, running inside [Curso
 ## What it does
 
 - **Daily briefing** — pulls your calendar, unread emails, and Jira tickets every morning into a structured Markdown file
+- **EM Attention OS** — turns calendar and Chief-of-Staff context into a five-area, 100-point attention budget with a daily "letter block" and private weekly review
 - **Agent council** — specialist AI agents for EM tasks: 1:1 prep, PR review, career coaching
 - **Live tool access** — Jira, Slack, GitHub, Google Calendar all accessible directly from chat
+
+## EM Attention Operating System
+
+The Attention OS is a local, dependency-free pilot for making an EM's focus
+intentional across Delivery, People, Support, Technical direction, and Team
+future.
+
+```bash
+python3 -m attention_os daily \
+  --calendar-json examples/attention-os/calendar.example.json
+```
+
+See [the setup and five-day pilot guide](docs/em-attention-os.md). A project
+skill is included at `.cursor/skills/em-attention-os/SKILL.md`, so teams that
+clone the repository can use the same workflow in Cursor.
 
 ## Agents
 
